@@ -1,7 +1,8 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar >
+    <ion-buttons slot="start" class="ion-activatable ripple-parent">
       <ion-menu-button color="danger"></ion-menu-button>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
     </ion-buttons>
     <ion-title style="text-align:center">Notes++</ion-title>
   </ion-toolbar>
@@ -33,13 +34,13 @@
       <ion-icon name="arrow-back-circle"></ion-icon>
     </ion-fab-button>
         <ion-fab-list side="start">
-          <ion-fab-button>
+          <ion-fab-button [routerLink]="['/notes']" routerDirection="forward">
             <ion-icon name="pencil"></ion-icon>
           </ion-fab-button>
-          <ion-fab-button>
+          <ion-fab-button [routerLink]="['/reminders']" routerDirection="forward">
             <ion-icon name="alarm"></ion-icon>
           </ion-fab-button>
-          <ion-fab-button>
+          <ion-fab-button [routerLink]="['/camera']" routerDirection="forward">
             <ion-icon name="camera"></ion-icon>
           </ion-fab-button>
           <ion-fab-button>
@@ -64,7 +65,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-card *ngFor="let weather of weatherData" >
+  <ion-card *ngFor="let weather of weatherData"  style="margin: 20px; border-radius: 15px;">
     <ion-card-header >
       <ion-card-subtitle>Today's Weather in {{weatherName}}</ion-card-subtitle>
       <ion-card-title>{{weather.main}} <img src="http://openweathermap.org/img/wn/{{weather.icon}}@2x.png"></ion-card-title>
@@ -74,8 +75,6 @@
       Right now in {{weatherName}} it's {{weatherMain.temp}} degrees with {{weather.description}}.
     </ion-card-content>
   </ion-card>
-
 </ion-content>
-
 
 <ion-router-outlet id="main"></ion-router-outlet>
