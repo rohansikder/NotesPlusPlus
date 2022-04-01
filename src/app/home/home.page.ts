@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { WeatherService } from '../Services/weather.service';
 
 
 @Component({
@@ -9,7 +10,24 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private menu: MenuController) {}
+  weatherData: any[];
+  weatherMain: number[];
+  weatherName: any[];
+
+  constructor(private menu: MenuController, private weatherService: WeatherService) { }
+
+  ngOnInit() {
+    this.weatherService.GetWeatherData().subscribe(
+      (data)=>{
+        this.weatherData = data.weather;
+        this.weatherMain = data.main;
+        this.weatherName = data.name;
+        console.log(this.weatherData);
+        console.log(this.weatherMain);
+        console.log(this.weatherName);
+      }
+      );
+  }
 
   openFirst() {
     this.menu.enable(true, 'first');
