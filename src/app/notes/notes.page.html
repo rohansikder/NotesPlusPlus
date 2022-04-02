@@ -1,12 +1,28 @@
-<ion-header>
+<ion-header style="text-align: center;">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" routerDirection="backward">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Notes</ion-title>
+    <ion-title>Add Note</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+
+  <ion-card style="border-radius: 25px;">
+    <ion-card-header>
+      <ion-card-title>Add a Note:</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content >
+      <ion-item >
+        <ion-textarea rows="6" cols="20" placeholder="Enter any notes here..."></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  
+  <ion-button expand="full" shape="round" color="danger" style="margin: 10px;"><ion-icon name="checkmark-circle-outline"></ion-icon>Save Note</ion-button>
+  
 </ion-content>
