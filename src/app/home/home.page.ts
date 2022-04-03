@@ -19,7 +19,6 @@ export class HomePage {
   latitude: number = 0; //latitude
   longitude: number = 0; //longitude
   
-
   constructor(private menu: MenuController, private weatherService: WeatherService, private geolocation: Geolocation) { }
 
 
@@ -29,6 +28,7 @@ export class HomePage {
     maximumAge: 3600
   };
 
+  /*Get weather to reload*/
   GetCurrentCoordinates(){
     this.geolocation.getCurrentPosition().then((resp) => {
       this.latitude = resp.coords.latitude;
@@ -41,6 +41,7 @@ export class HomePage {
     this.ngOnInit();
   }
 
+  /*Get weather on start up*/
   ngOnInit() {
     this.weatherService.GetCurrentCoordinates();
     this.weatherService.GetWeatherData(this.latitude,this.longitude).subscribe(
@@ -55,21 +56,6 @@ export class HomePage {
       );
   }
 
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
-  }
-
-    
 }
 
 
