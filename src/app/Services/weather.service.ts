@@ -38,6 +38,4 @@ export class WeatherService {
     return this.httpClient.get('https://api.openweathermap.org/data/2.5/weather?lat='+latitude+'&lon='+longitude+'&units=metric&appid=b24d401dd0cfa83f61714c391352943a');
   }
 
-
-
 }
