@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { WeatherService } from '../Services/weather.service';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { NoteService } from '../Services/note.service';
+import { NavController } from '@ionic/angular';
 
 
 
@@ -12,15 +14,26 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 })
 export class HomePage {
 
-  weatherMain: any[];
+  weatherMain = {
+  "temp":0,
+  "feels_like":0,
+  "temp_min":0,
+  "temp_max":0,
+  "pressure":0,
+  "humidity":0,
+  "sea_level":0,
+  "grnd_level":0
+}; 
+
   weatherData: any[];
   weatherName: any[];
-
 
   latitude: number = 0; //latitude
   longitude: number = 0; //longitude
   
-  constructor(private menu: MenuController, private weatherService: WeatherService, private geolocation: Geolocation) { }
+  notes: { title: string , content: string}[] = [];
+
+  constructor(public navCtrl: NavController, private menu: MenuController, private weatherService: WeatherService, private geolocation: Geolocation, private noteService: NoteService) { }
   
   //GPS
   options = {
@@ -57,6 +70,14 @@ export class HomePage {
       }
       );
 
+  }//End Of Ngoninit
+
+  ionViewWillEnter(){
+    this.notes = this.getAllNotes();
+  }
+
+  getAllNotes(){
+    return this.noteService.getAllNotes();
   }
 
 }

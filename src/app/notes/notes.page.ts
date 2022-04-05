@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Note } from 'src/models/note.module';
+import { NoteService } from '../Services/note.service';
+
 
 @Component({
   selector: 'app-notes',
   templateUrl: './notes.page.html',
   styleUrls: ['./notes.page.scss'],
 })
-export class NotesPage implements OnInit {
+export class NotesPage {
 
-  constructor() { }
+  constructor(private noteService: NoteService) { 
 
-  ngOnInit() {
+  }
+
+  saveNote(value: { title: string , content: string}){
+    this.noteService.saveNote(value);
+    console.log("SAVED NOTE" + value);
   }
 
 }
