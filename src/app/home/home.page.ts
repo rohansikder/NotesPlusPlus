@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { MenuController } from '@ionic/angular';
 import { WeatherService } from '../Services/weather.service';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
-import { NoteService } from '../Services/note.service';
 import { NavController } from '@ionic/angular';
-
+import { Storage } from '@ionic/storage-angular';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -28,12 +27,12 @@ export class HomePage {
   weatherData: any[];
   weatherName: any[];
 
-  latitude: number = 0; //latitude
-  longitude: number = 0; //longitude
+  latitude: number = 53.350140; //latitude
+  longitude: number = -6.266155; //longitude
   
-  notes: { title: string , content: string}[] = [];
+  notes: { title: string , content: string, index:number}[] = [];
 
-  constructor(public navCtrl: NavController, private menu: MenuController, private weatherService: WeatherService, private geolocation: Geolocation, private noteService: NoteService) { }
+  constructor(public navCtrl: NavController, private weatherService: WeatherService, private geolocation: Geolocation,private storage:Storage,public alertController: AlertController,private navController: NavController) { }
   
   //GPS
   options = {
@@ -72,14 +71,45 @@ export class HomePage {
 
   }//End Of Ngoninit
 
+  
   ionViewWillEnter(){
-    this.notes = this.getAllNotes();
+    this.storage.create()
+    .then(()=>{
+      this.storage.get('notes')
+      .then((data)=>{
+        this.notes = data;
+      })
+      .catch();
+    })
+    .catch();
   }
 
-  getAllNotes(){
-    return this.noteService.getAllNotes();
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Are you sure you want to reset?',
+      message: 'You will lose your data forever!!!',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          id: 'cancel-button',
+          handler: (blah) => {
+            console.log('Confirm Cancelled Do nothing');
+          }
+        }, {
+          text: 'Yes',
+          id: 'confirm-button',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.storage.clear();        
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
-
 }
 
 

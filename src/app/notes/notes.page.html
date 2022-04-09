@@ -15,13 +15,13 @@
     </ion-card-header>
   
     <ion-card-content >
-      <form (ngSubmit)="saveNote(f.value)" #f="ngForm" >
+      <form (ngSubmit)="saveNote(f.value)" #f="ngForm" required="true">
         <ion-item >
-          <ion-input name="title" type="text"  ngModel placeholder="Enter Title here"></ion-input>
+          <ion-input name="title" type="text"  ngModel placeholder="Enter Title here" required="true"></ion-input>
         </ion-item>
 
         <ion-item >
-          <ion-textarea name="content" type="text" ngModel placeholder="Enter any notes here..."></ion-textarea>
+          <ion-textarea name="content" type="text" ngModel placeholder="Enter any notes here..." required="true"></ion-textarea>
         </ion-item>
 
         <ion-button type="submit" expand="full" shape="round" color="danger" style="margin: 10px;"><ion-icon name="checkmark-circle-outline"></ion-icon>Save Note </ion-button>

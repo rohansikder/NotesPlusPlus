@@ -8,8 +8,8 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 })
 export class WeatherService {
 
-  latitude: any = 0; //latitude
-  longitude: any = 0; //longitude
+  latitude: any = 53.350140; //latitude
+  longitude: any = -6.266155; //longitude
 
   constructor(private httpClient: HttpClient,private geolocation: Geolocation) { }
 

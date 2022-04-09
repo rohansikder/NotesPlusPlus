@@ -8,10 +8,13 @@
     </ion-buttons>
     <ion-title style="text-align:center">Notes++ </ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false" color="danger" id="trigger-button"></ion-menu-button>
+      <ion-menu-button auto-hide="false" color="danger" id="menu-trigger-button"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button id="settings-trigger-button" color="dark"><ion-icon name="settings"></ion-icon></ion-button>
     </ion-buttons>
     <!-- Menu Popup -->
-    <ion-popover trigger="trigger-button" >
+    <ion-popover trigger="menu-trigger-button" >
       <ng-template>
         <ion-content>
           <ion-list>
@@ -30,7 +33,17 @@
         </ion-content>
       </ng-template>
     </ion-popover>
-    
+    <!-- Settings Popup -->
+    <ion-popover trigger="settings-trigger-button" >
+      <ng-template>
+        <ion-content>
+            <ion-item >
+              <ion-label  (click)="presentAlertConfirm()">Reset App</ion-label>
+            </ion-item>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+
   </ion-toolbar>
 </ion-header>
 
@@ -62,7 +75,7 @@
     Welcome to Notes++
   </h3>
 
-  <P style="font-size: small;">Here is your daily Weather forecast: </P>
+  <P style="font-size: small;">Double tap the location card for your daily Weather forecast: </P>
 
   <!-- Weather Card -->
   <ion-card *ngFor="let weather of weatherData" (click)="GetCurrentCoordinates()" >
@@ -84,7 +97,7 @@
 
   <ion-card *ngFor="let note of notes">
     <ion-card-header>
-      <ion-card-title>{{note.title}}</ion-card-title>
+      <ion-card-title>{{note.title}}:</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
