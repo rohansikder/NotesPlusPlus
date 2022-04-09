@@ -31,7 +31,7 @@ export class HomePage {
 
   notes: { title: string, content: string, index: number }[] = [];
 
-  noteCount: number = 0;
+  noteCount: number;
 
   constructor(public navCtrl: NavController, private weatherService: WeatherService, private geolocation: Geolocation, private storage: Storage, public alertController: AlertController, private navController: NavController) { }
 
@@ -58,6 +58,9 @@ export class HomePage {
 
   /*Get weather on start up*/
   ngOnInit() {
+
+    this.noteCount = Object.keys(this.notes).length;
+
     console.log(this.weatherMain);
     this.weatherService.GetCurrentCoordinates();
     this.weatherService.GetWeatherData(this.latitude, this.longitude).subscribe(
@@ -75,6 +78,7 @@ export class HomePage {
 
 
   ionViewWillEnter() {
+
     this.storage.create()
       .then(() => {
         this.storage.get('notes')

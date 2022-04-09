@@ -1,3 +1,4 @@
+import { getLocaleExtraDayPeriodRules } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
@@ -11,10 +12,9 @@ export class NoteService {
 
   constructor(private storage: Storage) { }
 
-
   saveNote(note: { title: string, content: string, index: number }) {
     this.notes.push(note);
-
+    
     this.storage.create()
       .then(() => {
         this.storage.set("notes", this.notes);
