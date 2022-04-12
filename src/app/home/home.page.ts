@@ -12,6 +12,9 @@ import { AlertController } from '@ionic/angular';
 })
 export class HomePage {
 
+  //Initialize variables
+
+  //Initialized  weatherMain object as i was having a displaying output issue
   weatherMain = {
     "temp": 0,
     "feels_like": 0,
@@ -35,8 +38,8 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private weatherService: WeatherService, private geolocation: Geolocation, private storage: Storage, public alertController: AlertController, private navController: NavController) { }
 
-  
-  //GPS
+
+  //GPS Options
   options = {
     timeout: 10000,
     enableHighAccuracy: true,
@@ -77,6 +80,7 @@ export class HomePage {
   }//End Of Ngoninit
 
 
+  //Gets all data from storage
   ionViewWillEnter() {
 
     this.storage.create()
@@ -89,10 +93,12 @@ export class HomePage {
       })
       .catch();
 
+      //Gets count of how many notes there is
       this.noteCount = Object.keys(this.notes).length;
 
   }
 
+  //Reset app function with confirm menu
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -112,6 +118,7 @@ export class HomePage {
           id: 'confirm-button',
           handler: () => {
             console.log('Confirm Okay');
+            //Reset app and reloads app
             this.storage.clear();
             window.location.reload();
           }

@@ -16,6 +16,7 @@
       <ion-card-title>Add a Note:</ion-card-title>
     </ion-card-header>
 
+    <!--Added notes and send it to .ts-->
     <ion-card-content>
       <form (ngSubmit)="saveNote(f.value)" #f="ngForm" required="true">
         <ion-item>
@@ -23,7 +24,8 @@
         </ion-item>
 
         <ion-item>
-          <ion-textarea name="content" type="text" ngModel placeholder="Enter any notes here..." rows="5" cols="10" required="true">
+          <ion-textarea name="content" type="text" ngModel placeholder="Enter any notes here..." rows="5" cols="10"
+            required="true">
           </ion-textarea>
         </ion-item>
 

@@ -36,7 +36,7 @@
         </ng-template>
       </ion-popover>
       <!-- Settings Popup -->
-      <ion-popover trigger="settings-trigger-button"  dismiss-on-select="true">
+      <ion-popover trigger="settings-trigger-button" dismiss-on-select="true">
         <ng-template>
           <ion-content>
             <ion-item>
@@ -55,7 +55,7 @@
     color="light">
 
     <!-- Static button on right bottom of page -->
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button color="danger">
         <ion-icon name="add-circle-sharp"></ion-icon>
       </ion-fab-button>
@@ -86,7 +86,8 @@
           <img src="http://openweathermap.org/img/wn/{{weather.icon}}@2x.png">
         </ion-card-title>
         <ion-card-subtitle>
-          {{weatherMain.temp_max  | number: '1.0-0'}}° / {{weatherMain.temp_min  | number: '1.0-0'}}° Feels like {{weatherMain.feels_like  | number: '1.0-0'}}°
+          {{weatherMain.temp_max | number: '1.0-0'}}° / {{weatherMain.temp_min | number: '1.0-0'}}° Feels like
+          {{weatherMain.feels_like | number: '1.0-0'}}°
         </ion-card-subtitle>
       </ion-card-header>
 

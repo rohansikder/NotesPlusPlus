@@ -12,7 +12,10 @@ export class NotesPage {
   constructor(private noteService: NoteService, private toastController: ToastController) {
   }
 
-  async saveNote(value: { title: string, content: string, index: number}) {
+
+
+  //Saves note and sends to Note service adn includes validation
+  async saveNote(value: { title: string, content: string, index: number }) {
 
     if (value.content && value.title != null) {
 
@@ -29,6 +32,7 @@ export class NotesPage {
       toast.present();
 
     } else {
+      //Validation
       const toast = await this.toastController.create({
         color: 'dark',
         message: 'Please enter your Title and Note into the Input box above',
