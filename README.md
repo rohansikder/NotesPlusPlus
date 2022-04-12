@@ -1,6 +1,6 @@
 # Ionic Angular Notes Application
 
-This application is Notes app with multifeatures built using the Ionic Framework and Angular.
+This application is Notes app with multifunctional features built using the Ionic Framework and Angular.
 
 ## Getting Started
 * [Download the installer](https://nodejs.org/) for Node LTS.
