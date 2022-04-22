@@ -56,7 +56,19 @@ export class HomePage {
       console.log('Error getting location', error);
     });
 
-    this.ngOnInit();
+    console.log(this.weatherMain);
+    this.weatherService.GetCurrentCoordinates();
+    this.weatherService.GetWeatherData(this.latitude, this.longitude).subscribe(
+      (data) => {
+        this.weatherMain = data.main;
+        this.weatherName = data.name;
+        this.weatherData = data.weather;
+        console.log(this.weatherData);
+        console.log(this.weatherMain);
+        console.log(this.weatherName);
+      }
+    );
+
   }
 
   /*Get weather on start up*/
