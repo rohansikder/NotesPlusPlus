@@ -4,6 +4,9 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Add Reminder</ion-title>
+    <ion-button style="padding: 5px;" slot="end" [routerLink]="['/calender']" routerDirection="forward" color="danger">
+      <ion-icon name="calendar-number-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -36,5 +39,4 @@ color="light">
       </form>
     </ion-card-content>
   </ion-card>
-
 </ion-content>

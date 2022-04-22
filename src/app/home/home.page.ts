@@ -155,6 +155,7 @@ export class HomePage {
     await alert.present();
   }
 
+  //Gets current date
   today : number = Date.now();
 }
 

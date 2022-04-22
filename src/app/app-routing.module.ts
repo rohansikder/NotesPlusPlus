@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'reminders-list',
     loadChildren: () => import('./reminders-list/reminders-list.module').then( m => m.RemindersListPageModule)
   },
+  {
+    path: 'calender',
+    loadChildren: () => import('./calender/calender.module').then( m => m.CalenderPageModule)
+  },
 
 ];
 
