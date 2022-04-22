@@ -2,6 +2,8 @@
 
 This application is Notes app with multifunctional features built using the Ionic Framework, Angular and Cordova.
 
+Feel free to check out the App wiki https://github.com/rohansikder/G00389052/wiki
+
 ## Getting Started
 * [Download the installer](https://nodejs.org/) for Node LTS.
 * Install the ionic CLI globally: `npm install -g ionic`
