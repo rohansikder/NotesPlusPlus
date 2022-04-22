@@ -27,9 +27,9 @@
                 <ion-label>Notes</ion-label>
                 <ion-badge slot="end" color="danger">{{noteCount}}</ion-badge>
               </ion-item>
-              <ion-item href="">
+              <ion-item [routerLink]="['/reminders-list']">
                 <ion-label>Reminders</ion-label>
-                <ion-badge slot="end" color="danger">x</ion-badge>
+                <ion-badge slot="end" color="danger">{{reminderCount}}</ion-badge>
               </ion-item>
             </ion-list>
           </ion-content>
@@ -74,6 +74,7 @@
 
     <h3>
       Welcome to Notes++
+      <ion-label><P>{{today | date:'fullDate'}}</P></ion-label>
     </h3>
 
     <P style="font-size: small;">Double tap the location card for your daily Weather forecast: </P>

@@ -33,10 +33,13 @@ export class HomePage {
   longitude: number = -6.266155; //longitude
 
   notes: { title: string, content: string, index: number }[] = [];
+  reminders: { title: string, content: string, index: number }[] = [];
 
   noteCount: number;
+  reminderCount: number;
+  
 
-  constructor(public navCtrl: NavController, private weatherService: WeatherService, private geolocation: Geolocation, private storage: Storage, public alertController: AlertController, private navController: NavController) { }
+  constructor(public navCtrl: NavController, private weatherService: WeatherService, private geolocation: Geolocation, private storage: Storage, public alertController: AlertController) { }
 
 
   //GPS Options
@@ -75,6 +78,7 @@ export class HomePage {
   ngOnInit() {
 
     this.noteCount = Object.keys(this.notes).length;
+    this.reminderCount = Object.keys(this.reminders).length;
 
     console.log(this.weatherMain);
     this.weatherService.GetCurrentCoordinates();
@@ -105,8 +109,19 @@ export class HomePage {
       })
       .catch();
 
+      this.storage.create()
+      .then(() => {
+        this.storage.get('reminders')
+          .then((data) => {
+            this.reminders = data;
+          })
+          .catch();
+      })
+      .catch();
+
       //Gets count of how many notes there is
       this.noteCount = Object.keys(this.notes).length;
+      this.reminderCount = Object.keys(this.reminders).length;
 
   }
 
@@ -139,6 +154,8 @@ export class HomePage {
     });
     await alert.present();
   }
+
+  today : number = Date.now();
 }
 
 

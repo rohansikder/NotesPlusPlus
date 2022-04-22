@@ -3,10 +3,38 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Reminders</ion-title>
+    <ion-title>Add Reminder</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="text-align: center; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+color="light">
+
+  <ion-label>Today<P>{{today | date:'fullDate'}}</P></ion-label>
+
+  <ion-card style="border-radius: 25px;">
+    <ion-card-header>
+      <ion-card-title>Add a Reminder:</ion-card-title>
+    </ion-card-header>
+
+    <!--Added reminder and send it to .ts-->
+    <ion-card-content>
+      <form (ngSubmit)="saveReminder(f.value)" #f="ngForm" required="true">
+        <ion-item>
+          <ion-input name="title" type="text" ngModel placeholder="Enter Due date here:" required="true"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-textarea name="content" type="text" ngModel placeholder="Enter any reminder here..." rows="5" cols="10"
+            required="true">
+          </ion-textarea>
+        </ion-item>
+
+        <ion-button type="submit" expand="full" shape="round" color="danger" style="margin: 10px;">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>Save Reminder
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

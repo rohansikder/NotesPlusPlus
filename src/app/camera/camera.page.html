@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-buttons slot="start" routerDirection="backward">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-toolbar >
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,5 +11,5 @@
 </ion-header>
 
 <ion-content>
-<ion-button (click)="takePicture()">Take pic</ion-button>
+<ion-button (click)="takePicture()">Take Picture</ion-button>
 </ion-content>

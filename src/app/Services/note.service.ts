@@ -1,4 +1,3 @@
-import { getLocaleExtraDayPeriodRules } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
@@ -23,6 +22,5 @@ export class NoteService {
       })
       .catch();
   }
-
 
 }

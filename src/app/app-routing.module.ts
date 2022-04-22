@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'notes-list',
     loadChildren: () => import('./notes-list/notes-list.module').then( m => m.NotesListPageModule)
+  },  {
+    path: 'reminders-list',
+    loadChildren: () => import('./reminders-list/reminders-list.module').then( m => m.RemindersListPageModule)
   },
+
 ];
 
 @NgModule({

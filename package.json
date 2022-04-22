@@ -28,6 +28,7 @@
     "@ionic/cordova-builders": "^6.1.0",
     "@ionic/core": "^6.0.14",
     "@ionic/storage-angular": "^3.0.6",
+    "cordova-res": "^0.15.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -52,7 +53,6 @@
     "@typescript-eslint/parser": "5.3.0",
     "cordova-android": "^6.1.2",
     "cordova-ios": "^6.2.0",
-    "cordova-plugin-camera": "^6.0.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-geolocation": "^4.1.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
@@ -86,10 +86,7 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-nativestorage": {},
-      "cordova-plugin-camera": {
-        "ANDROIDX_CORE_VERSION": "1.6.+"
-      }
+      "cordova-plugin-nativestorage": {}
     },
     "platforms": [
       "android",

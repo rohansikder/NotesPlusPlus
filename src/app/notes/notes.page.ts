@@ -12,8 +12,6 @@ export class NotesPage {
   constructor(private noteService: NoteService, private toastController: ToastController) {
   }
 
-
-
   //Saves note and sends to Note service adn includes validation
   async saveNote(value: { title: string, content: string, index: number }) {
 
@@ -41,9 +39,6 @@ export class NotesPage {
       toast.present();
     }
 
-
   }
-
-
 
 }
