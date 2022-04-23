@@ -72,13 +72,14 @@
         <ion-fab-button [routerLink]="['/camera']" routerDirection="forward" color="success">
           <ion-icon name="camera"></ion-icon>
         </ion-fab-button>
-
       </ion-fab-list>
     </ion-fab>
 
     <h3>
       Welcome to Notes++
-      <ion-label><P>{{today | date:'fullDate'}}</P></ion-label>
+      <ion-label>
+        <P>{{today | date:'fullDate'}}</P>
+      </ion-label>
     </h3>
 
     <P style="font-size: small;">Double tap the location card for your daily Weather forecast: </P>
@@ -102,21 +103,52 @@
     </ion-card>
 
 
-    <!-- Recent Notes -->
-    <h3>Recent Notes:</h3>
+    <!-- Recent and reminders -->
+    <h3>Recent's:</h3>
 
-    <ion-card *ngFor="let note of notes; index as i ;">
-      <ion-card-header>
-        <ion-card-title>{{note.title}}</ion-card-title>
-        <ion-card-subtitle>Note Number:{{i}}</ion-card-subtitle>
-      </ion-card-header>
+    <!--Segment so separate  recent notes and reminders-->
 
-      <ion-card-content>
-        {{note.content}}
-      </ion-card-content>
-    </ion-card>
+    <ion-segment [(ngModel)]="segment" style="border-radius: 10px; margin: 5px;">
+      <ion-segment-button checked value="notes">
+        <ion-label>
+          <ion-icon name="book-outline"></ion-icon> Notes
+        </ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="reminders">
+        <ion-label>
+          <ion-icon name="alarm-outline"></ion-icon> Reminders
+        </ion-label>
+      </ion-segment-button>
+    </ion-segment>
 
+    <!--Switches between notes and reminders-->
+    <div [ngSwitch]="segment">
+      <ion-card *ngSwitchCase="'notes'">
+        <ion-card *ngFor="let note of notes; index as i ;">
+          <ion-card-header>
+            <ion-card-title>{{note.title}}</ion-card-title>
+            <ion-card-subtitle>Note Number:{{i}}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            {{note.content}}
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+
+      <ion-card *ngSwitchCase="'reminders'">
+        <ion-card *ngFor="let reminders of reminders; index as i ;">
+          <ion-card-header>
+            <ion-card-title>Due on: {{reminders.title}}</ion-card-title>
+            <ion-card-subtitle>Reminder Number:{{i}}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            {{reminders.content}}
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+    </div>
 
   </ion-content>
-
 </ion-app>

@@ -12,12 +12,15 @@ export class NotesListPage {
 
   constructor(private storage: Storage, public alertController: AlertController, private toastController: ToastController) { }
 
+
+  //Initialize variables
   notes: { title: string, content: string, index: number }[] = [];
 
   noteCount: number;
 
   noteNumber: number;
 
+  //Entering page it will get all notes
   ionViewWillEnter() {
     this.storage.create()
       .then(() => {
@@ -80,7 +83,5 @@ export class NotesListPage {
       });
       toast.present();
     }
-
-
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RemindersService } from '../Services/reminders.service';
 import { ToastController } from '@ionic/angular';
- 
+
 @Component({
   selector: 'app-reminders',
   templateUrl: './reminders.page.html',
@@ -9,11 +9,12 @@ import { ToastController } from '@ionic/angular';
 })
 export class RemindersPage {
 
-  constructor( private toastController: ToastController, private reminderService: RemindersService) { }
+  constructor(private toastController: ToastController, private reminderService: RemindersService) { }
 
+  //Initialized variables
   private reminder: { title: string, content: string, index: number }[] = [];
 
-  today : number = Date.now();
+  today: number = Date.now();
 
 
   //Saves reminder and sends to reminder service adn includes validation

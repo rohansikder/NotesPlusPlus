@@ -35,12 +35,14 @@ export class HomePage {
   notes: { title: string, content: string, index: number }[] = [];
   reminders: { title: string, content: string, index: number }[] = [];
 
+  //Counting how many notes
   noteCount: number;
   reminderCount: number;
-  
+
+  //Setting notes as default
+  segment: string = "notes";
 
   constructor(public navCtrl: NavController, private weatherService: WeatherService, private geolocation: Geolocation, private storage: Storage, public alertController: AlertController) { }
-
 
   //GPS Options
   options = {
@@ -95,7 +97,6 @@ export class HomePage {
 
   }//End Of Ngoninit
 
-
   //Gets all data from storage
   ionViewWillEnter() {
 
@@ -109,7 +110,7 @@ export class HomePage {
       })
       .catch();
 
-      this.storage.create()
+    this.storage.create()
       .then(() => {
         this.storage.get('reminders')
           .then((data) => {
@@ -119,9 +120,9 @@ export class HomePage {
       })
       .catch();
 
-      //Gets count of how many notes there is
-      this.noteCount = Object.keys(this.notes).length;
-      this.reminderCount = Object.keys(this.reminders).length;
+    //Gets count of how many notes there is
+    this.noteCount = Object.keys(this.notes).length;
+    this.reminderCount = Object.keys(this.reminders).length;
 
   }
 
@@ -156,7 +157,8 @@ export class HomePage {
   }
 
   //Gets current date
-  today : number = Date.now();
+  today: number = Date.now();
+
 }
 
 

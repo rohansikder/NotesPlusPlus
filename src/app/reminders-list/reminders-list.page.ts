@@ -8,8 +8,9 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './reminders-list.page.html',
   styleUrls: ['./reminders-list.page.scss'],
 })
-export class RemindersListPage{
+export class RemindersListPage {
 
+  //initialize Variables
   constructor(private storage: Storage, public alertController: AlertController, private toastController: ToastController) { }
 
   reminders: { title: string, content: string, index: number }[] = [];
@@ -29,13 +30,14 @@ export class RemindersListPage{
       })
       .catch();
 
+    //Gets counter of reminders
     this.reminderCount = Object.keys(this.reminders).length;
   }
 
+  //Checks if there is a valid note to delete
 
   async presentAlertConfirm() {
     this.reminderCount = Object.keys(this.reminders).length;
-
 
     if (this.reminderNumber < this.reminderCount && this.reminderCount > -1) {
 
@@ -79,7 +81,6 @@ export class RemindersListPage{
       });
       toast.present();
     }
-
 
   }
 
